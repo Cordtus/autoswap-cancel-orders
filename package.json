@@ -7,8 +7,8 @@
   "scripts": {
     "use-these": "########## USE THESE: ##########",
     "compile": "npm run build-rm-github-pages & npm run build-rm-dist & npm run dev-rm-preview & npm-run-all --parallel build-html build-bundle-js build-css build-images & npm run build-github-pages",
-    "dev--old": "npm run dev-compile && concurrently \"npm run watch\" \"npm run serve\"",
-    "dev": "npm run dev-compile && npm run watch & npm run serve",
+    "dev": "npm run dev-compile && concurrently -c \"auto\" npm:service-*",
+    "dev--old": "npm run dev-compile && npm run watch & npm run serve",
     "dont-use": "########## DON'T USE THESE: ##########",
     "build-bundle-js": "browserify -t [ babelify --presets [ @babel/preset-env ] ] src/index.js -o dist/bundle.js -s module",
     "build-css": "xcopy /E /Y \".\\src\\styles\\\" \".\\dist\\styles\\\" ",
@@ -23,11 +23,11 @@
     "dev-images": "xcopy /E /Y \".\\src\\images\\\" \".\\preview\\images\\\" && xcopy /E /Y \".\\src\\favicon.ico\" \".\\preview\\\"",
     "dev-rm-preview": "rmdir /s /q preview",
     "dev-compile": "npm run dev-rm-preview & npm-run-all --parallel dev-html dev-bundle-js dev-css dev-images",
-    "watch": "concurrently npm:watch-*",
+    "service-watch": "concurrently -c \"auto\" npm:watch-*",
     "watch-html": "nodemon --watch \"src\" --ext \"html\" --exec \"npm run dev-html\"",
     "watch-js": "nodemon --watch \"src\" --ext \"js\" --exec \"npm run dev-bundle-js\"",
     "watch-css": "nodemon --watch \"src\" --ext \"css\" --exec \"npm run dev-css\"",
-    "serve": "http-server ./preview -p 80 -c-1 || exit 1"
+    "service-serve": "http-server ./preview -p 80 -c-1 || exit 1"
   },
   "repository": {
     "type": "git",
