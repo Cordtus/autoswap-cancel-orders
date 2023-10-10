@@ -140,7 +140,7 @@ async function loadOrders(walletAddress) {
       ordersDiv.innerHTML = "No Orders Found";
       return;
     }
-    ordersDiv.innerHTML = "Loading Orders...";
+    ordersDiv.innerHTML = "";
     createdOrders.forEach(order => {
       const orderDiv = document.createElement('div');
       orderDiv.className = 'order';
