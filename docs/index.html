@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancel Autoswap by jasbanza</title>
+    <script src="bundle.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div id="mask" class="mask hidden">
+      <div id="modal" class="modal">
+        <!-- modal message -->
+        <div id="modalTitle">Title</div>
+        <div id="modalMessage">Message</div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <header>
+      <h1>Cancel Autoswap</h1>
+      <h3>
+        <a
+          href="https://github.com/jasbanza/autoswap-cancel-orders"
+          target="_blank"
+          >View on GitHub</a
+        >
+      </h3>
+    </header>
+    <br><br>
+    <div id="walletContainer" class="hidden container">
+      <!-- connected wallet -->
+      <div>Connected Wallet:</div>
+      <div id="walletAddress"></div>
+      <div id="btnDisconnect" class="button" onclick="btnDisconnectWallet()">
+        Disconnect Keplr
+      </div>
+    </div>
+    <div class="container">
+      <div id="btnConnect" class="button" onclick="btnConnectWallet()">
+        Connect Keplr
+      </div>
+    </div>
+    
+
+    <!-- flex for interface -->
+    <div
+      style="display: flex; flex-direction: row; justify-content: space-between"
+    >
+      <!-- left side -->
+      <div style="width: 45%">
+        <div id="orders" class="orders container"></div>
+      </div>
+    </div>
+    <div id="responseContainer" class="console hidden">
+      Response:
+      <div id="divResponse"></div>
+    </div>
+    <div id="errorContainer" class="console hidden">
+      Error:
+      <div id="divError"></div>
+    </div>
+  </body>
+</html>

@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cancel Autoswap by jasbanza</title>
     <script src="bundle.js"></script>
-    <style>
-      * {
-        font-family: sans-serif;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
+    <div id="mask" class="mask hidden">
+      <div id="modal" class="modal">
+        <!-- modal message -->
+        <div id="modalTitle">Title</div>
+        <div id="modalMessage">Message</div>
+        <div class="spinner"></div>
+      </div>
+    </div>
     <header>
       <h1>Cancel Autoswap</h1>
       <h3>
@@ -22,6 +26,21 @@
         >
       </h3>
     </header>
+    <br><br>
+    <div id="walletContainer" class="hidden container">
+      <!-- connected wallet -->
+      <div>Connected Wallet:</div>
+      <div id="walletAddress"></div>
+      <div id="btnDisconnect" class="button" onclick="btnDisconnectWallet()">
+        Disconnect Keplr
+      </div>
+    </div>
+    <div class="container">
+      <div id="btnConnect" class="button" onclick="btnConnectWallet()">
+        Connect Keplr
+      </div>
+    </div>
+    
 
     <!-- flex for interface -->
     <div
@@ -29,17 +48,16 @@
     >
       <!-- left side -->
       <div style="width: 45%">
-        <h2>Cancel Orders</h2>
-        <div>
-          <label for="inputAddress">Address</label>
-        </div>
+        <div id="orders" class="orders container"></div>
       </div>
     </div>
-
-    Response:
-    <div id="divResponse"></div>
-    Error:
-    <div id="divError"></div>
-    <button onclick="testTransaction()">Test Transaction</button>
+    <div id="responseContainer" class="console hidden">
+      Response:
+      <div id="divResponse"></div>
+    </div>
+    <div id="errorContainer" class="console hidden">
+      Error:
+      <div id="divError"></div>
+    </div>
   </body>
 </html>
