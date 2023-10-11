@@ -1,17 +1,32 @@
 * {
-  font-family: sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .hidden {
   display: none !important;
 }
+
+header {
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
 .orders {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .order {
-  border: 1px solid #ccc;
+  border: 1px solid #2f2f2f;
   margin: 10px;
   padding: 10px;
   width: calc(33% - 20px);
@@ -54,7 +69,6 @@
   align-items: center;
   margin-bottom: 20px;
 }
-
 .container > div {
   margin: 10px;
 }
