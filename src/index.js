@@ -2,6 +2,8 @@ import { cosmwasm, FEES, getSigningOsmosisClient, getSigningCosmwasmClient } fro
 const { executeContract } = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
 const { MsgExecuteContract } = cosmwasm.wasm.v1;
 
+const restUrl = "https://rest-osmosis.ecostake.com";
+
 (async () => {
   // waits for window.keplr to exist (if extension is installed, enabled and injecting its content script)
   await getKeplr();
@@ -86,7 +88,7 @@ export async function btnConnectKeplr_onClick() {
 async function loadOrders(walletAddress) {
   try {
     ui_showLoadingMask({ modalMessage: "Please Wait...", modalTitle: "Fetching Created Orders" });
-    const responseCreated = await fetch(`https://lcd.osmosis.zone/cosmos/tx/v1beta1/txs?events=message.sender='${walletAddress}'&events=message.action='/cosmwasm.wasm.v1.MsgExecuteContract'&events=wasm._contract_address='osmo1wg5qzw6yn88yz9kxtwvs36fmq5jxa03pg6zptvgte62hrlw0c4rqc9mjtf'&events=wasm.action='create_request'`)
+    const responseCreated = await fetch(`${restUrl}/cosmos/tx/v1beta1/txs?events=message.sender='${walletAddress}'&events=message.action='/cosmwasm.wasm.v1.MsgExecuteContract'&events=wasm._contract_address='osmo1wg5qzw6yn88yz9kxtwvs36fmq5jxa03pg6zptvgte62hrlw0c4rqc9mjtf'&events=wasm.action='create_request'`)
     const dataCreated = await responseCreated.json();
 
 
@@ -111,7 +113,7 @@ async function loadOrders(walletAddress) {
     ui_showLoadingMask({ modalMessage: "Please Wait...", modalTitle: "Fetching Closed Orders" });
 
     //build array of cancelled orders
-    const responseCancelled = await fetch(`https://lcd.osmosis.zone/cosmos/tx/v1beta1/txs?events=message.sender='${walletAddress}'&events=message.action='/cosmwasm.wasm.v1.MsgExecuteContract'&events=wasm._contract_address='osmo1wg5qzw6yn88yz9kxtwvs36fmq5jxa03pg6zptvgte62hrlw0c4rqc9mjtf'&events=wasm.action='cancel_request'`)
+    const responseCancelled = await fetch(`${restUrl}/cosmos/tx/v1beta1/txs?events=message.sender='${walletAddress}'&events=message.action='/cosmwasm.wasm.v1.MsgExecuteContract'&events=wasm._contract_address='osmo1wg5qzw6yn88yz9kxtwvs36fmq5jxa03pg6zptvgte62hrlw0c4rqc9mjtf'&events=wasm.action='cancel_request'`)
     const dataCancelled = await responseCancelled.json();
 
     // loop through and remove cancelled orders from created orders
