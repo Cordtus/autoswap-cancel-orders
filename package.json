@@ -8,7 +8,6 @@
     "use-these": "########## USE THESE: ##########",
     "compile": "npm run build-rm-github-pages & npm run build-rm-dist & npm run dev-rm-preview & npm-run-all --parallel build-html build-bundle-js build-css build-images & npm run build-github-pages",
     "dev": "npm run dev-compile && concurrently -c \"auto\" npm:service-*",
-    "dev--old": "npm run dev-compile && npm run watch & npm run serve",
     "dont-use": "########## DON'T USE THESE: ##########",
     "build-bundle-js": "browserify -t [ babelify --presets [ @babel/preset-env ] ] src/index.js -o dist/bundle.js -s module",
     "build-css": "xcopy /E /Y \".\\src\\styles\\\" \".\\dist\\styles\\\" ",

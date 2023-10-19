@@ -50,6 +50,17 @@
       <div style="width: 45%">
         <div id="orders" class="orders container"></div>
       </div>
+      <!-- right side -->
+      <div style="width: 45%">
+        <!-- input text field to enter a custom order id -->
+        <div id="custom-order" class="container">
+          <div>Order ID:</div>
+          <input id="orderId" type="text" />
+          <button id="btnCancel" class="button cancel-button" onclick="btnCancelCustomOrder()">
+            Cancel Order
+          </button>
+        </div>
+      </div>
     </div>
     <div id="responseContainer" class="console hidden">
       Response:

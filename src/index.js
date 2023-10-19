@@ -218,6 +218,18 @@ async function cancelOrder(orderId) {
 window.cancelOrder = cancelOrder;
 window.btnDisconnectWallet = btnDisconnectWallet;
 window.btnConnectWallet = btnConnectWallet;
+window.btnCancelCustomOrder = btnCancelCustomOrder;
+
+
+function btnCancelCustomOrder() {
+  const orderId = document.getElementById("orderId").value;
+  // if orderId isn't a number, return
+  if (!orderId || isNaN(orderId) || !Number.isInteger(Number(orderId)) || orderId < 0 || !Number.isSafeInteger(Number(orderId))) {
+    ui_showError("Invalid Order ID");
+    return;
+  }
+  cancelOrder(orderId);
+}
 
 // UI FUNCTIONS
 
@@ -262,12 +274,16 @@ async function ui_setWallet(wallet) {
   if (wallet) {
     document.getElementById("walletAddress").innerHTML = wallet.bech32Address;
     ui_showElementById("walletContainer");
+    ui_showElementById("orders");
+    ui_showElementById("custom-order");
     ui_hideElementById("btnConnect");
-
+ 
     await loadOrders(wallet.bech32Address);
 
   } else {
     ui_hideElementById("walletContainer");
+    ui_hideElementById("orders");
+    ui_hideElementById("custom-order");
     ui_showElementById("btnConnect");
   }
   ui_reinitialize();
