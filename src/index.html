@@ -56,7 +56,11 @@
         <div id="custom-order" class="container">
           <div>Order ID:</div>
           <input id="orderId" type="text" />
-          <button id="btnCancel" class="button cancel-button" onclick="btnCancelCustomOrder()">
+          <button
+            id="btnCancel"
+            class="button cancel-button"
+            onclick="btnCancelCustomOrder()"
+          >
             Cancel Order
           </button>
         </div>
@@ -69,6 +73,15 @@
     <div id="errorContainer" class="console hidden">
       Error:
       <div id="divError"></div>
+    </div>
+    <div class="footer">
+      You can add ?id=ORDER_ID to the end of this URL to help users cancel their
+      order if they can't find it themselves.
+      <br />
+      e.g.
+      <a href="https://jasbanza.github.io/autoswap-cancel-orders/?id=123"
+        >https://jasbanza.github.io/autoswap-cancel-orders/?id=123</a
+      >
     </div>
   </body>
 </html>

@@ -33,12 +33,13 @@ header a:hover {
 }
 .cancel-button {
   color: white;
-  background-color: red;
-  padding: 10px;
+  background-color: darkred !important;
+  margin:5px !important;
+  padding: 5px !important;
   cursor: pointer;
 }
 .cancel-button:hover {
-  background-color: darkred;
+  background-color: red !important;
 }
 
 .button {
@@ -123,6 +124,19 @@ header a:hover {
   width: 100%;
   height: 150px;
   max-height: 50vh;
+}
+/* footer at the bottom of the page: */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  
+  font-size: 12px;
 }
 
 .spinner {

@@ -10,6 +10,12 @@ const restUrl = "https://rest-osmosis.ecostake.com";
   // ok keplr is present... enable chain
   await keplr_connectOsmosis();
 
+  // check URL for id field, and set value of orderId input
+  const urlParams = new URLSearchParams(window.location.search);
+  const orderId = urlParams.get('id');
+  if (orderId) {
+    document.getElementById("orderId").value = orderId;
+  }
 
 })();
 
