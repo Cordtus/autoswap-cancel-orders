@@ -314,8 +314,13 @@ function btnConnectWallet() {
 
 function ui_removeOrder(orderId) {
   // Remove the order from the orders div
+
   const ordersDiv = document.getElementById('orders');
+  if (!ordersDiv) return;
+
   const orderDiv = document.querySelector(`.order[data-id="${orderId}"]`);
+  if (!orderDiv) return;
+  
   ordersDiv.removeChild(orderDiv);
 }
 
