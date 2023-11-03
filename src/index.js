@@ -4,6 +4,9 @@ const { MsgExecuteContract } = cosmwasm.wasm.v1;
 
 const restUrl = "https://rest-osmosis.ecostake.com";
 
+navigator.serviceWorker.register("service-worker.js");
+
+
 (async () => {
   // waits for window.keplr to exist (if extension is installed, enabled and injecting its content script)
   await getKeplr();
@@ -234,7 +237,7 @@ function btnCancelCustomOrder() {
     ui_showError("Invalid Order ID");
     return;
   }
-  cancelOrder(orderId);
+  cancelOrder(parseInt(orderId));
 }
 
 // UI FUNCTIONS
