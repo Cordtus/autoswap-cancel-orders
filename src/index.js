@@ -210,10 +210,11 @@ async function cancelOrder(orderId) {
       ui_showLoadingMask({ modalMessage: "Broadcasting Transaction...", modalTitle: "Please Wait" });
 
       try {
+        ui_hideResponse();
+        ui_hideError();
         const result = await client.signAndBroadcast(walletAddress, [msg], gasFee, "by https://jasbanza.github.io/autoswap-cancel-orders");
         ui_showResponse(result);
         ui_removeOrder(orderId);
-
       } catch (error) {
         ui_showError(error.message);
       }
