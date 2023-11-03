@@ -215,7 +215,6 @@ async function cancelOrder(orderId) {
         ui_removeOrder(orderId);
 
       } catch (error) {
-        ui_hideElementById("lastTxHash");
         ui_showError(error.message);
       }
       ui_hideLoadingMask();
@@ -320,7 +319,7 @@ function ui_removeOrder(orderId) {
 
   const orderDiv = document.querySelector(`.order[data-id="${orderId}"]`);
   if (!orderDiv) return;
-  
+
   ordersDiv.removeChild(orderDiv);
 }
 
